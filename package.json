@@ -4,11 +4,26 @@
   "description": "Raytracer Challenge",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js"
+    "test": "cucumber-js",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "test": {
+      "patterns": [
+        "src",
+        "features"
+      ],
+      "extensions": "js,jsx,feature",
+      "quiet": true,
+      "verbose": false,
+      "delay": 100,
+      "inherit": true
+    }
   },
   "author": "Brian Azizi",
   "license": "ISC",
   "devDependencies": {
-    "cucumber": "^6.0.5"
+    "cucumber": "^6.0.5",
+    "npm-watch": "^0.6.0"
   }
 }
