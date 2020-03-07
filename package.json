@@ -4,8 +4,11 @@
   "description": "Raytracer Challenge",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "cucumber-js"
   },
   "author": "Brian Azizi",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cucumber": "^6.0.5"
+  }
 }
