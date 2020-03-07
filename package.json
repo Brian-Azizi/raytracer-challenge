@@ -1,0 +1,11 @@
+{
+  "name": "raytracer-challenge",
+  "version": "1.0.0",
+  "description": "Raytracer Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "author": "Brian Azizi",
+  "license": "ISC"
+}
