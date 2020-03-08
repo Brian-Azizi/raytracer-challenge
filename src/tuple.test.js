@@ -1,4 +1,4 @@
-const { tuple, point, vector, add, subtract } = require("./tuple");
+const { tuple, point, vector, add, subtract, negate } = require("./tuple");
 
 test("A tuple with w=1.0 is a point", () => {
   const a = tuple(4.3, -4.2, 3.1, 1.0);
@@ -41,4 +41,14 @@ test("Subtracting two vectors", () => {
   const v1 = vector(3, 2, 1);
   const v2 = vector(5, 6, 7);
   expect(subtract(v1, v2)).toEqual(vector(-2, -4, -6));
+});
+test("Subtracting a vector from the zero vector", () => {
+  const zero = vector(0, 0, 0);
+  const v = vector(1, -2, 3);
+  expect(subtract(zero, v)).toEqual(vector(-1, 2, -3));
+});
+
+test("Negating a tuple", () => {
+  const a = tuple(1, -2, 3, -4);
+  expect(negate(a)).toEqual(tuple(-1, 2, -3, 4));
 });
