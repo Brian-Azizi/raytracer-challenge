@@ -24,6 +24,10 @@
   "license": "ISC",
   "devDependencies": {
     "cucumber": "^6.0.5",
+    "jest": "^25.1.0",
     "npm-watch": "^0.6.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
   }
 }
