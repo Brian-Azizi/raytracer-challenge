@@ -13,6 +13,7 @@ const divide = (t, scalar) =>
   tuple(t.x / scalar, t.y / scalar, t.z / scalar, t.w / scalar);
 const magnitude = vec =>
   Math.sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w);
+const normalize = vec => divide(vec, magnitude(vec));
 
 module.exports = {
   tuple,
@@ -23,5 +24,6 @@ module.exports = {
   negate,
   mult,
   divide,
-  magnitude
+  magnitude,
+  normalize
 };

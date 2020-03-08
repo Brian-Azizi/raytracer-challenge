@@ -7,7 +7,8 @@ const {
   negate,
   mult,
   divide,
-  magnitude
+  magnitude,
+  normalize
 } = require("./tuple");
 
 test("A tuple with w=1.0 is a point", () => {
@@ -84,4 +85,21 @@ test.each([
 ])("Computing the magnitude of %s", (v, expected) => {
   const vec = eval(v);
   expect(magnitude(vec)).toEqual(expected);
+});
+
+test("Normalizing vector(4, 0, 0) gives (1, 0, 0)", () => {
+  const v = vector(4, 0, 0);
+  expect(normalize(v)).toEqual(vector(1, 0, 0));
+});
+test("Normalizing vector(1, 2, 3)", () => {
+  const v = vector(1, 2, 3);
+  const expected = vector(0.26726, 0.53452, 0.80178);
+  expect(normalize(v)).toEqual(
+    vector(1 / Math.sqrt(14), 2 / Math.sqrt(14), 3 / Math.sqrt(14))
+  );
+});
+test("The magnitude of a normalized vector", () => {
+  const v = vector(1, 2, 3);
+  const norm = normalize(v);
+  expect(magnitude(norm)).toEqual(1);
 });

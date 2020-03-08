@@ -1,4 +1,5 @@
 const assert = require("assert");
+const expect = require("expect");
 const { Given, When, Then, defineParameterType } = require("cucumber");
 const {
   tuple,
@@ -9,13 +10,14 @@ const {
   negate,
   mult,
   divide,
-  magnitude
+  magnitude,
+  normalize
 } = require("../../src/tuple");
 const get = require("lodash/get");
 
 defineParameterType({
   name: "function_expression",
-  regexp: /(?:tuple|point|vector|Math\.sqrt)\([,\s\d\-\.]*\)/
+  regexp: /(?:tuple|point|vector|normalize|Math\.sqrt)\([,\s\d\-\.]*\)/
 });
 defineParameterType({
   name: "nested_variable",
@@ -89,7 +91,27 @@ Then("{variable}\\({variable}) = {function_expression}", function(
   expected
 ) {
   const x = this[variable];
-  assert.equal(eval(`${func}(x)`), eval(expected));
+  assert.deepEqual(eval(`${func}(x)`), eval(expected));
+});
+Then("{variable}\\({variable}) = approximately {function_expression}", function(
+  func,
+  variable,
+  result
+) {
+  const x = this[variable];
+  const v = eval(`${func}(x)`);
+  const expected = eval(result);
+  expect(v.x).toBeCloseTo(expected.x);
+  expect(v.y).toBeCloseTo(expected.y);
+  expect(v.z).toBeCloseTo(expected.z);
+});
+When("{variable} <- {variable}\\({variable})", function(
+  variable,
+  func,
+  variable2
+) {
+  const x = this[variable2];
+  this[variable] = eval(`${func}(x)`);
 });
 Then("{nested_variable} = {float}", function(
   [variable, nested_property],
