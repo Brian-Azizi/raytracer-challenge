@@ -1,6 +1,6 @@
 const assert = require("assert");
 const { Given, When, Then, defineParameterType } = require("cucumber");
-const { tuple, point, vector, add } = require("../../src/tuple");
+const { tuple, point, vector, add, subtract } = require("../../src/tuple");
 const get = require("lodash/get");
 
 defineParameterType({
@@ -12,11 +12,6 @@ defineParameterType({
   regexp: /([a-zA-Z]+)\.([a-zA-Z]+(?:\.[a-zA-Z]+)*)/,
   transformer: (variable, nested_property) => [variable, nested_property]
 });
-// defineParameterType({
-//   name: "sum_variables",
-//   regexp: /([a-zA-Z]+)\.([a-zA-Z]+(?:\.[a-zA-Z]+)*)/,
-//   transformer: (variable, nested_property) => [variable, nested_property]
-// });
 
 Given("{word} <- {function_expression}", function(
   variable,
@@ -34,6 +29,16 @@ Then("{word} + {word} = {function_expression}", function(
 ) {
   assert.deepEqual(
     add(this[variable1], this[variable2]),
+    eval(function_expression)
+  );
+});
+Then("{word} - {word} = {function_expression}", function(
+  variable1,
+  variable2,
+  function_expression
+) {
+  assert.deepEqual(
+    subtract(this[variable1], this[variable2]),
     eval(function_expression)
   );
 });
