@@ -8,7 +8,9 @@ const {
   mult,
   divide,
   magnitude,
-  normalize
+  normalize,
+  dot,
+  cross
 } = require("./tuple");
 
 test("A tuple with w=1.0 is a point", () => {
@@ -102,4 +104,16 @@ test("The magnitude of a normalized vector", () => {
   const v = vector(1, 2, 3);
   const norm = normalize(v);
   expect(magnitude(norm)).toEqual(1);
+});
+
+test("The dot product of two tuples", () => {
+  const a = vector(1, 2, 3);
+  const b = vector(2, 3, 4);
+  expect(dot(a, b)).toEqual(20);
+});
+test("The cross product of two vectors", () => {
+  const a = vector(1, 2, 3);
+  const b = vector(2, 3, 4);
+  expect(cross(a, b)).toEqual(vector(-1, 2, -1));
+  expect(cross(b, a)).toEqual(vector(1, -2, 1));
 });

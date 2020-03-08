@@ -14,6 +14,9 @@ const divide = (t, scalar) =>
 const magnitude = vec =>
   Math.sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w);
 const normalize = vec => divide(vec, magnitude(vec));
+const dot = (a, b) => a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
+const cross = (a, b) =>
+  vector(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);
 
 module.exports = {
   tuple,
@@ -25,5 +28,7 @@ module.exports = {
   mult,
   divide,
   magnitude,
-  normalize
+  normalize,
+  dot,
+  cross
 };
