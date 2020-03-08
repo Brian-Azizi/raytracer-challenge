@@ -1,4 +1,12 @@
-const { tuple, point, vector, add, subtract, negate } = require("./tuple");
+const {
+  tuple,
+  point,
+  vector,
+  add,
+  subtract,
+  negate,
+  mult
+} = require("./tuple");
 
 test("A tuple with w=1.0 is a point", () => {
   const a = tuple(4.3, -4.2, 3.1, 1.0);
@@ -47,8 +55,16 @@ test("Subtracting a vector from the zero vector", () => {
   const v = vector(1, -2, 3);
   expect(subtract(zero, v)).toEqual(vector(-1, 2, -3));
 });
-
 test("Negating a tuple", () => {
   const a = tuple(1, -2, 3, -4);
   expect(negate(a)).toEqual(tuple(-1, 2, -3, 4));
+});
+
+test("Multiplying a tuple by a scalar", () => {
+  const a = tuple(1, -2, 3, -4);
+  expect(mult(a, 3.5)).toEqual(tuple(3.5, -7, 10.5, -14));
+});
+test("Multiplying a tuple by a fraction", () => {
+  const a = tuple(1, -2, 3, -4);
+  expect(mult(a, 0.5)).toEqual(tuple(0.5, -1, 1.5, -2));
 });

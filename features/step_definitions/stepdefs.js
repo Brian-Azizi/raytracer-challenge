@@ -6,7 +6,8 @@ const {
   vector,
   add,
   subtract,
-  negate
+  negate,
+  mult
 } = require("../../src/tuple");
 const get = require("lodash/get");
 
@@ -61,6 +62,13 @@ Then("-{variable} = {function_expression}", function(
   function_expression
 ) {
   assert.deepEqual(negate(this[variable]), eval(function_expression));
+});
+Then("{variable} * {float} = {function_expression}", function(
+  variable,
+  scalar,
+  function_expression
+) {
+  assert.deepEqual(mult(this[variable], scalar), eval(function_expression));
 });
 Then("{nested_variable} = {float}", function(
   [variable, nested_property],
