@@ -67,3 +67,15 @@ Feature: Tuples
     Scenario: Dividing a tuple by a scalar
         Given a <- tuple(1, -2, 3, -4)
         Then a / 2 = tuple(0.5, -1, 1.5, -2)
+
+    Scenario Outline: Computing the magnitude of a vector
+        Given v <- <vector>
+        Then magnitude(v) = <magnitude>
+
+        Examples:
+            | vector             | magnitude     |
+            | vector(1, 0, 0)    | 1             |
+            | vector(0, 1, 0)    | 1             |
+            | vector(0, 0, 1)    | 1             |
+            | vector(1, 2, 3)    | Math.sqrt(14) |
+            | vector(-1, -2, -3) | Math.sqrt(14) |

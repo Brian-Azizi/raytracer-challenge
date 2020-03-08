@@ -11,6 +11,8 @@ const mult = (t, scalar) =>
   tuple(t.x * scalar, t.y * scalar, t.z * scalar, t.w * scalar);
 const divide = (t, scalar) =>
   tuple(t.x / scalar, t.y / scalar, t.z / scalar, t.w / scalar);
+const magnitude = vec =>
+  Math.sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w);
 
 module.exports = {
   tuple,
@@ -20,5 +22,6 @@ module.exports = {
   subtract,
   negate,
   mult,
-  divide
+  divide,
+  magnitude
 };
