@@ -4,12 +4,13 @@
   "description": "Raytracer Challenge",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js",
-    "watch": "npm-watch",
-    "jest": "jest --watch"
+    "test": "jest && cucumber-js",
+    "watch:cujs": "npm-watch",
+    "watch:jest": "jest --watch",
+    "cujs": "cucumber-js"
   },
   "watch": {
-    "test": {
+    "cujs": {
       "patterns": [
         "src",
         "features"
