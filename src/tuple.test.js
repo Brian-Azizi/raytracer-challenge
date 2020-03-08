@@ -5,7 +5,8 @@ const {
   add,
   subtract,
   negate,
-  mult
+  mult,
+  divide
 } = require("./tuple");
 
 test("A tuple with w=1.0 is a point", () => {
@@ -67,4 +68,8 @@ test("Multiplying a tuple by a scalar", () => {
 test("Multiplying a tuple by a fraction", () => {
   const a = tuple(1, -2, 3, -4);
   expect(mult(a, 0.5)).toEqual(tuple(0.5, -1, 1.5, -2));
+});
+test("Dividing a tuple by a scalar", () => {
+  const a = tuple(1, -2, 3, -4);
+  expect(divide(a, 2)).toEqual(tuple(0.5, -1, 1.5, -2));
 });

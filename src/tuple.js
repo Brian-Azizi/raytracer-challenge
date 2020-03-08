@@ -9,6 +9,8 @@ const subtract = (t1, t2) =>
 const negate = vec => subtract(vector(0, 0, 0), vec);
 const mult = (t, scalar) =>
   tuple(t.x * scalar, t.y * scalar, t.z * scalar, t.w * scalar);
+const divide = (t, scalar) =>
+  tuple(t.x / scalar, t.y / scalar, t.z / scalar, t.w / scalar);
 
 module.exports = {
   tuple,
@@ -17,5 +19,6 @@ module.exports = {
   add,
   subtract,
   negate,
-  mult
+  mult,
+  divide
 };
